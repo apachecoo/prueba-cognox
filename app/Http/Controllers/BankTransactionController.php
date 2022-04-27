@@ -47,9 +47,10 @@ class BankTransactionController extends Controller
 
         $validated['user_id']=auth()->user()->id;
 
-        try{
+        // try{
 
             $transaction=BankTransaction::create($validated);
+            $this->updateBalanceAccount($validated['root_account'],$validated['destination_account'],$validated['amount']);
 
             return redirect()->route("transfer-own-account.index")
                             ->with("mensaje", "Transaccion numero ".$transaction->id."   exitosa")
@@ -57,12 +58,12 @@ class BankTransactionController extends Controller
 
             
 
-        }catch(\Exception $e){
-            Log::error('Error al guardar transaccion'.__LINE__.' del archivo '.__FILE__.'.Error: '.$e->getMessage());
-            return back()->withErrors([
-                'amount' => 'Error inesperado por favor contactarse con el administrador',
-            ]);
-        }
+        // }catch(\Exception $e){
+        //     Log::error('Error al guardar transaccion'.__LINE__.' del archivo '.__FILE__.'.Error: '.$e->getMessage());
+        //     return back()->withErrors([
+        //         'amount' => 'Error inesperado por favor contactarse con el administrador',
+        //     ]);
+        // }
 
     }
 
@@ -78,6 +79,20 @@ class BankTransactionController extends Controller
 
     public function getBankAccountsModel(){
         return new BankAccounts;
+    }
+
+    public function updateBalanceAccount($accountNumberOrigin,$accountNumberDestination,$value){
+
+        $bankAccountOrigin = BankAccounts::where('account_number', $accountNumberOrigin)->first();
+                             BankAccounts::where('account_number', $accountNumberOrigin)
+                                           ->update(['balance' => $bankAccountOrigin->balance+$value]);
+
+        $bankAccountDestination = BankAccounts::where('account_number', $accountNumberDestination)->first();
+                                  BankAccounts::where('account_number', $accountNumberDestination)
+                                                ->update(['balance' => $bankAccountDestination->balance-$value]);
+
+
+        
     }
 
     
