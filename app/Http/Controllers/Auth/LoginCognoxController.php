@@ -15,18 +15,27 @@ class LoginCognoxController extends Controller
     {
         $this->middleware('guest')->except('logout');
     }
-    
+
     public function login(Request $request)
     {
+        // dd(Hash::make($request->password));
+        
+        // dd($request->all());
+        $credentials = $request->validate([
+            'identification_document' => ['required', 'numeric'],
+            'password' => ['required','numeric','digits_between:1,4'],
+        ]);
 
         $user = User::where('identification_document', $request->identification_document)->first();
 
         if (!empty($user) && Hash::check($request->password, $user->password)) {
-            Auth::login($user);
+            Auth::login($user,($request->remember? true:false));
             $request->session()->regenerate();
             return redirect()->intended('home');
         } else {
-            dd("contraseña errada");
+            return back()->withErrors([
+                'password' => 'Las credenciales proporcionadas no coinciden con nuestros registros.',
+            ]);
         }
 
     }

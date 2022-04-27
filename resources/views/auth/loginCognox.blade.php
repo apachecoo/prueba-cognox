@@ -15,7 +15,7 @@
                             <label for="identification_document" class="col-md-4 col-form-label text-md-end">{{ __('Documento') }}</label>
 
                             <div class="col-md-6">
-                                <input id="identification_document" type="text" class="form-control @error('identification_document') is-invalid @enderror" name="identification_document" value="{{ old('email') }}" required autocomplete="email" autofocus>
+                                <input id="identification_document" type="text" class="form-control @error('identification_document') is-invalid @enderror" name="identification_document" value="{{ old('identification_document') }}" autocomplete="identification_document" autofocus>
 
                                 @error('identification_document')
                                     <span class="invalid-feedback" role="alert">
@@ -29,7 +29,7 @@
                             <label for="password" class="col-md-4 col-form-label text-md-end">{{ __('Password') }}</label>
 
                             <div class="col-md-6">
-                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
+                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password"  autocomplete="current-password">
 
                                 @error('password')
                                     <span class="invalid-feedback" role="alert">

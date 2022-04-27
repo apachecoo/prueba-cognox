@@ -19,7 +19,7 @@ class UserSeeder extends Seeder
             'name' => 'Albert Pacheco Ospitia',
             'email' => 'apachecoo110@gmail.com',
             'email_verified_at' => null,
-            'password' => '$2y$10$WjMf9xwT8dbHxxEyxS3WXeeYs4hsfISMOvKsPtob7hESOZ.dQNbIu',
+            'password' => '$2y$10$ib89FJsj9VgA23NXc9A9jOAjlluDIKE7sQiE37I6.dneS9qhWTNU2',
             'remember_token' => null,
             'identification_document' => 1110519660
         ];
