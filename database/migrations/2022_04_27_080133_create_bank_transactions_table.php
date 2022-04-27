@@ -19,7 +19,7 @@ class CreateBankTransactionsTable extends Migration
             $table->integer('destination_account');
             $table->decimal('amount', $precision = 8, $scale = 2);
             $table->integer('user_id');
-            $table->timestamp('added_at', $precision = 0);
+            $table->timestamp('added_at', $precision = 0)->useCurrent();
             
         });
     }
