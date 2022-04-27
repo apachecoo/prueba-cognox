@@ -146,6 +146,12 @@ return [
     |
     */
 
-    'attributes' => [],
+    'attributes' => [
+        'identification_document' => 'documento',
+        'password' => 'contraseña',
+        'amount' => 'monto',
+        'destination_account' => 'cuenta destino',
+        'root_account' => 'cuenta origen'
+    ],
 
 ];

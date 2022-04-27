@@ -52,8 +52,11 @@
                                 </li>
                             @endif
                         @else
+                        <li class="nav-item active">
+                            <a class="nav-link" href="{{ route('home') }}">Inicio </a>
+                        </li>
                             <li class="nav-item active">
-                                <a class="nav-link" href="{{ route('bank-transactions.index') }}">Transacciones Bancarias </a>
+                                <a class="nav-link" href="{{ route('list-transfer') }}">Transacciones Bancarias </a>
                             </li>
                             <li class="nav-item active">
                                 <a class="nav-link" href="#">Estado de cuenta</a>

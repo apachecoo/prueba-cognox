@@ -31,14 +31,14 @@ Route::get('/login', function () {
 
  Route::post('/login-cognox', [App\Http\Controllers\Auth\LoginCognoxController::class, 'login'])->name('login.cognox');
  Route::post('/logout-cognox', [App\Http\Controllers\Auth\LoginCognoxController::class, 'logout'])->name('logout.cognox');
- Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+ Route::get('/home', [App\Http\Controllers\BankTransactionController::class, 'index'])->name('home');
 
 
-//  Route::resources([
-//     'bank-transactions' => App\Http\Controllers\BankTransactionController::class,
-    
-// ]);
 
 //------transferencias bancarias
 Route::get('/bank-transactions', [App\Http\Controllers\BankTransactionController::class, 'index'])->name('bank-transactions.index');
 Route::get('/index-transfer-own-account', [App\Http\Controllers\BankTransactionController::class, 'indexTransferOwnAccount'])->name('transfer-own-account.index');
+Route::post('/create-transfer-own-account', [App\Http\Controllers\BankTransactionController::class, 'saveTransferOwnAccount'])->name('transfer-own-account.create');
+Route::get('/list-transfer', [App\Http\Controllers\BankTransactionController::class, 'listTransfer'])->name('list-transfer');
+
+
