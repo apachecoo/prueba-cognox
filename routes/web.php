@@ -17,14 +17,18 @@ use Illuminate\Support\Facades\Route;
 //     return view('welcome');
 // });
 
-//--antes
-Auth::routes();
+// Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+ 
 
 Route::get('/', function () {
-    return view('auth.login');
+    return view('auth.loginCognox');
 });
 
-//--despues
- Route::get('/login-cognox', [App\Http\Controllers\LoginCognoxController::class, 'index'])->name('login-cognox');
+Route::get('/login', function () {
+    return view('auth.loginCognox');
+})->name('login');
+
+ Route::post('/login-cognox', [App\Http\Controllers\Auth\LoginCognoxController::class, 'login'])->name('login.cognox');
+ Route::post('/logout-cognox', [App\Http\Controllers\Auth\LoginCognoxController::class, 'logout'])->name('logout.cognox');
+ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
