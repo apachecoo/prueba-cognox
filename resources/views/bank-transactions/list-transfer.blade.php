@@ -6,7 +6,7 @@
 
  
   <div class="my-3 p-3 bg-white rounded box-shadow">
-    <h1 class="border-bottom border-gray pb-2 mb-0">Transferencias Bancariashola</h1>
+    <h1 class="border-bottom border-gray pb-2 mb-0">Transferencias Bancarias</h1>
 
     @if (count($banksTransactions)>0)
     

@@ -7,7 +7,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Prueba-cognox') }}</title>
+    <title>Prueba-cognox - Albert Pacheco Ospitia</title>
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" ></script>
@@ -55,9 +55,31 @@
                         <li class="nav-item active">
                             <a class="nav-link" href="{{ route('home') }}">Inicio </a>
                         </li>
-                            <li class="nav-item active">
+                            {{-- <li class="nav-item active">
                                 <a class="nav-link" href="{{ route('list-transfer') }}">Transacciones Bancarias </a>
+                            </li> --}}
+
+                            <li class="nav-item dropdown">
+                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                    Transacciones Bancarias    
+                                </a>
+
+                                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="{{ route('transfer-own-account.index') }}"
+                                       >
+                                        Cuentas propias
+                                    </a>
+                                    <a class="dropdown-item" href="{{ route('logout.cognox') }}"
+                                       >
+                                        Cuentas terceros
+                                    </a>
+                                    <a class="dropdown-item" href="{{ route('list-transfer') }}"
+                                       >
+                                        Listar transacciones Bancarias
+                                    </a>
+                                </div>
                             </li>
+
                             <li class="nav-item active">
                                 <a class="nav-link" href="#">Estado de cuenta</a>
                             </li>

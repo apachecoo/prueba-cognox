@@ -77,7 +77,7 @@
       <div class="row mb-3">
         <label for="identification_document" class="col-md-4 col-form-label text-md-end">valor</label>
         <div class="col-md-6">
-          <input id="amount" type="text" class="form-control @error('amount') is-invalid @enderror" name="amount" value="{{old('amount')}}" autocomplete="amount"
+          <input id="amount" type="text" class="form-control @error('amount') is-invalid @enderror" name="amount" value="{{old('amount')}}" 
             autofocus="">
             @error('amount')
             <span class="invalid-feedback" role="alert">

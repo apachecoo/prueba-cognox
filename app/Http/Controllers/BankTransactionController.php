@@ -10,9 +10,6 @@ use Log;
 class BankTransactionController extends Controller
 {
     
-
-    
-
     public function __construct()
     {
         $this->middleware('auth');
@@ -41,12 +38,26 @@ class BankTransactionController extends Controller
         $validated = $request->validate([
             'root_account' => ['required', 'numeric'],
             'destination_account' => ['required','numeric','different:root_account'],
-            'amount' => ['required'],
+            'amount' => ['required','min:0','not_in:0'],
         ]);
-
-
+        
         $validated['user_id']=auth()->user()->id;
+        $sourceAccountData= $this->getDataBankAccount($validated['root_account']);
 
+        
+        if(is_object($sourceAccountData) ){
+            if($sourceAccountData->balance < $validated['amount']){
+                return back()->withErrors([
+                    'amount' => 'La cuenta origen '.$validated['root_account'].' no tiene saldo suficiente. Saldo actual: '.$sourceAccountData->balance,
+                ]);       
+            }
+        }else{
+            return back()->withErrors([
+                'amount' => 'La cuenta origen no existe o esta inactiva',
+            ]);
+    
+        }
+        
         // try{
 
             $transaction=BankTransaction::create($validated);
@@ -93,6 +104,12 @@ class BankTransactionController extends Controller
 
 
         
+    }
+
+    public function getDataBankAccount($bankAccount){
+
+        return $this->getBankAccountsModel()->getBankAccountsByAccountNumber($bankAccount);
+
     }
 
     
