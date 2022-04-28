@@ -104,11 +104,11 @@ class BankTransactionController extends Controller
 
         $bankAccountOrigin = BankAccounts::where('account_number', $accountNumberOrigin)->first();
                              BankAccounts::where('account_number', $accountNumberOrigin)
-                                           ->update(['balance' => $bankAccountOrigin->balance+$value]);
+                                           ->update(['balance' => $bankAccountOrigin->balance-$value]);
 
         $bankAccountDestination = BankAccounts::where('account_number', $accountNumberDestination)->first();
                                   BankAccounts::where('account_number', $accountNumberDestination)
-                                                ->update(['balance' => $bankAccountDestination->balance-$value]);
+                                                ->update(['balance' => $bankAccountDestination->balance+$value]);
 
 
         
