@@ -40,5 +40,4 @@ Route::get('/bank-transactions', [App\Http\Controllers\BankTransactionController
 Route::get('/index-transfer-own-account', [App\Http\Controllers\BankTransactionController::class, 'indexTransferOwnAccount'])->name('transfer-own-account.index');
 Route::post('/create-transfer-own-account', [App\Http\Controllers\BankTransactionController::class, 'saveTransferOwnAccount'])->name('transfer-own-account.create');
 Route::get('/list-transfer', [App\Http\Controllers\BankTransactionController::class, 'listTransfer'])->name('list-transfer');
-
-
+Route::get('/list-account-status', [App\Http\Controllers\BankTransactionController::class, 'listAccountStatus'])->name('list-account-status');

@@ -58,7 +58,7 @@ class BankTransactionController extends Controller
     
         }
         
-        // try{
+         try{
 
             $transaction=BankTransaction::create($validated);
             $this->updateBalanceAccount($validated['root_account'],$validated['destination_account'],$validated['amount']);
@@ -69,12 +69,12 @@ class BankTransactionController extends Controller
 
             
 
-        // }catch(\Exception $e){
-        //     Log::error('Error al guardar transaccion'.__LINE__.' del archivo '.__FILE__.'.Error: '.$e->getMessage());
-        //     return back()->withErrors([
-        //         'amount' => 'Error inesperado por favor contactarse con el administrador',
-        //     ]);
-        // }
+        }catch(\Exception $e){
+            Log::error('Error al guardar transaccion'.__LINE__.' del archivo '.__FILE__.'.Error: '.$e->getMessage());
+            return back()->withErrors([
+                'amount' => 'Error inesperado por favor contactarse con el administrador',
+            ]);
+        }
 
     }
 
@@ -86,6 +86,14 @@ class BankTransactionController extends Controller
 
         return view('bank-transactions/list-transfer',compact('banksTransactions'));
         
+    }
+
+    public function listAccountStatus(){
+
+        $ownAccounts =  $this->ownAccounts= $this->getBankAccountsModel()
+                                                 ->getBankAccountsByIdentificationDocumentAll(auth()->user()->identification_document);
+
+        return view('bank-transactions/list-account-status',compact('ownAccounts'));
     }
 
     public function getBankAccountsModel(){

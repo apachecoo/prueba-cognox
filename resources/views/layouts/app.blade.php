@@ -81,7 +81,7 @@
                             </li>
 
                             <li class="nav-item active">
-                                <a class="nav-link" href="#">Estado de cuenta</a>
+                                <a class="nav-link" href="{{route('list-account-status')}}">Estado de cuenta</a>
                             </li>
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
