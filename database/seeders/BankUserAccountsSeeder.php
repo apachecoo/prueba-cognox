@@ -22,6 +22,18 @@ class BankUserAccountsSeeder extends Seeder
             [
                 'user_id' => 1,
                 'account_number' => 1454545
+            ],
+            [
+                'user_id' => 1,
+                'account_number' => 145456
+            ],
+            [
+                'user_id' => 1,
+                'account_number' => 5564110
+            ],
+            [
+                'user_id' => 1,
+                'account_number' => 7778845
             ]
             
         ];

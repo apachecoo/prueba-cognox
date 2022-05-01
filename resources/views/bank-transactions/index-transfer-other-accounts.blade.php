@@ -57,12 +57,12 @@
         <div class="col-md-6">
           <select class="form-select @error('destination_account') is-invalid @enderror" id="destination_account" name="destination_account">
             <option disabled selected>Selecciona cuenta destino</option>
-            @foreach ($ownAccounts as $ownAccount)
-            @if (old('destination_account') == $ownAccount->account_number )
-                  <option value="{{ $ownAccount->account_number }}" selected>{{ $ownAccount->account_number }}</option>
+            @foreach ($otherAccounts as $otherAccount)
+            @if (old('destination_account') == $otherAccount->account_number )
+                  <option value="{{ $otherAccount->account_number }}" selected>{{ $otherAccount->account_number }}</option>
             @else
-                  <option value="{{ $ownAccount->account_number}}">{{ $ownAccount->account_number}} - {{ $ownAccount->names }}
-              {{ $ownAccount->surnames }}</option>
+                  <option value="{{ $otherAccount->account_number}}">{{ $otherAccount->account_number}} - {{ $otherAccount->names }}
+              {{ $otherAccount->surnames }}</option>
             @endif
             @endforeach
           </select>

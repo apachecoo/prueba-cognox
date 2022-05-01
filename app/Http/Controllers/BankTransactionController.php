@@ -33,10 +33,13 @@ class BankTransactionController extends Controller
     public function indexTransferOtherAccount()
     {
 
-        $ownAccounts =  $this->ownAccounts= $this->getBankAccountsModel()
-                                                 ->getBankAccountsByIdentificationDocument(auth()->user()->identification_document);
-    
-        return view('bank-transactions/index-transfer-other-accounts',compact('ownAccounts'));
+        $ownAccounts = $this->getBankAccountsModel()
+                            ->getBankAccountsByIdentificationDocument(auth()->user()->identification_document);
+
+        $otherAccounts = $this->getBankAccountsModel()
+                              ->getBankOtherAccountsByIdentificationDocument(auth()->user()->identification_document);
+
+        return view('bank-transactions/index-transfer-other-accounts',compact('ownAccounts','otherAccounts'));
     }
 
     public function saveTransferOwnAccount(Request $request)

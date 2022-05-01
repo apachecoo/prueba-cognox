@@ -56,14 +56,18 @@ class BankAccounts extends Model
 
     }
 
-    public function getBankOtherAccounts($identificationDocument){
+    public function getBankOtherAccountsByIdentificationDocument($identificationDocument,$status=1){
 
         $data= $this->selectRaw('ba.account_number,ba.active,ba.balance,ba.identification_document,bp.names,bp.surnames')
-        ->from('bank_accounts as ba')
+        ->from('bank_user_accounts as ua')
+        ->leftjoin('bank_accounts as ba', 'ua.account_number', '=', 'ba.account_number')
         ->leftjoin('bank_person as bp', 'ba.identification_document', '=', 'bp.identification_document')
-        ->where('ba.identification_document',$identificationDocument)
-        ->get();
-
+        ->leftjoin('users as u', 'ua.user_id', '=', 'u.id')
+        ->where('u.identification_document',$identificationDocument)
+         ->where('ba.identification_document','!=',$identificationDocument)
+         ->get();
+        // ->where('ba.active','=',$status)->get();
+        
         return $data ? $data: [];
 
     }
