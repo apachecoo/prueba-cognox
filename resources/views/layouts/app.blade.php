@@ -7,7 +7,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>Prueba-cognox - Albert Pacheco Ospitia</title>
+    <title>Prueba-Cognox - Albert Pacheco Ospitia</title>
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" ></script>
@@ -23,7 +23,7 @@
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
-                <a class="navbar-brand" href="{{ url('/') }}">
+                <a class="navbar-brand" href="{{ url('/home') }}">
                     <img src="{{ asset('images/LogoCOGNOXop.png')}}" alt="" srcset="">
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
@@ -69,7 +69,7 @@
                                        >
                                         Cuentas propias
                                     </a>
-                                    <a class="dropdown-item" href="{{ route('logout.cognox') }}"
+                                    <a class="dropdown-item" href="{{ route('transfer-other-account.index') }}"
                                        >
                                         Cuentas terceros
                                     </a>
