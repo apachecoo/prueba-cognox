@@ -100,3 +100,8 @@
 
   </div>
   @endsection
+
+  @section('scripts')
+  <script src="{{ asset('js\custom\banks-transactions\transfer-own-account\transfer-own-account.js') }}" ></script>
+  @endsection
+  {{-- C:\xampp\htdocs\prueba-cognox\public\js\custom\banks-transactions\transfer-own-account\transfer-own-account.js --}}
